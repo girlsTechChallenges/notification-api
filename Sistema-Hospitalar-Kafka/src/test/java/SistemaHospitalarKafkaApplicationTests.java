@@ -1,13 +1,12 @@
-package com.sistema.hospitalar.fiap.kafka.Sistema.Hospitalar.Kafka;
-
+import api.MainApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = MainApplication.class)
 class SistemaHospitalarKafkaApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
-
 }
+
