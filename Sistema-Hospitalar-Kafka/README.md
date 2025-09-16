@@ -47,9 +47,6 @@ src/main/java/api
 
 ![Texto Alternativo](./assets/diagrama-kafka.drawio.para-readme.png)
 
-Perfeito, Isabella! Vamos destrinchar seu projeto passo a passo para você entender **o funcionamento da aplicação e como o Kafka entra nisso**, incluindo o papel de cada arquivo que você criou.
-
-
 ## 1️⃣ Visão geral da aplicação
 
 Sua aplicação segue o **padrão MVC** com Kafka integrado:
