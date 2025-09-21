@@ -73,7 +73,7 @@ O fluxo geral é:
 
 ### 📄 2.1 `ConsulationDTO.java`
 
-* **Local:** `api.dto`
+* **Local:** `api.domain`
 * **Função:** representa o **modelo de dados da consulta**, que será enviado pelo producer para Kafka.
 * Contém:
 
