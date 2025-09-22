@@ -41,7 +41,7 @@ public class EmailService {
         }
 
         String emailBody = String.format(
-                "Olá %s,\nSua consulta foi %s com %s.\n\nData/Hora: %s\nMotivo: %s\n\nAtenciosamente,\nSistema Hospitalar.",
+                "Olá %s,%nSua consulta foi %s com %s.%n%nData/Hora: %s%nMotivo: %s%n%nAtenciosamente,%nSistema Hospitalar.",
                 consulation.getNomePaciente(),
                 consulationStatus,
                 consulation.getNomeProfissional(),
@@ -60,7 +60,7 @@ public class EmailService {
             mailSender.send(message);
             logger.info("Email enviado com sucesso!");
         } catch (MailException e) {
-            logger.info("Erro ao enviar email: " + e.getMessage());
+            logger.info("Erro ao enviar email {}", e.getMessage());
             throw new EmailNotSentException("Não foi possível enviar o email, tente novamente mais tarde.");
         }
     }

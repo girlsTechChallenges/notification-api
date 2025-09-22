@@ -14,7 +14,7 @@ public class ConsulationService {
     private final EmailService emailService;
 
     @Value("${app.kafka.topic.consulations}")
-    private String topic;
+    String topic;
 
     public ConsulationService(KafkaTemplate<String, String> kafkaTemplate, ObjectMapper objectMapper, EmailService emailService) {
         this.kafkaTemplate = kafkaTemplate;
