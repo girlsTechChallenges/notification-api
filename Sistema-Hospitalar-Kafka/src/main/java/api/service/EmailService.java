@@ -22,31 +22,28 @@ public class EmailService {
 
     private SimpleMailMessage chooseMessageEmail(Consulation consulation) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(consulation.getEmailPaciente());
+        message.setTo(consulation.getPacient().getEmail());
 
-        if (consulation.getStatus() == ConsulationStatus.REALIZADA) {
-            message.setSubject("Realização de Consulta");
-        } else {
-            message.setSubject("Confirmação de Consulta");
-        }
-
+        // TODO: revalidar esses cenários
         ConsulationEmailStatus consulationStatus;
 
-        if (consulation.getStatus() == ConsulationStatus.AGENDADA) {
-            consulationStatus = ConsulationEmailStatus.CONFIRMADA;
-        } else if (consulation.getStatus() == ConsulationStatus.EDITADA) {
-            consulationStatus = ConsulationEmailStatus.REAGENDADA;
+        if (ConsulationStatus.SCHEDULED.equals(consulation.getStatusConsulation())) {
+            consulationStatus = ConsulationEmailStatus.AGENDADA;
+            message.setSubject("Agendamento da Consulta");
         } else {
-            consulationStatus = ConsulationEmailStatus.REALIZADA;
+            consulationStatus = ConsulationEmailStatus.CANCELADA;
+            message.setSubject("Cancelamento da Consulta");
         }
 
+
         String emailBody = String.format(
-                "Olá %s,%nSua consulta foi %s com %s.%n%nData/Hora: %s%nMotivo: %s%n%nAtenciosamente,%nSistema Hospitalar.",
-                consulation.getNomePaciente(),
+                "Olá %s,%nSua consulta foi %s com %s.%n%nData: %s Hora: %s%nMotivo: %s%n%nAtenciosamente,%nSistema Hospitalar.",
+                consulation.getPacient().getName(),
                 consulationStatus,
-                consulation.getNomeProfissional(),
-                consulation.getDataHora(),
-                consulation.getMotivo()
+                consulation.getNameProfessional(),
+                consulation.getDate(),
+                consulation.getLocalTime(),
+                consulation.getReason()
         );
 
         message.setText(emailBody);
