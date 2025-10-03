@@ -2,16 +2,20 @@ package api.entrypoint.controller;
 
 import api.domain.model.Consulation;
 import api.entrypoint.dto.request.ConsulationRequestDto;
+import api.entrypoint.dto.response.ConsulationResponseDto;
 import api.mapper.ConsulationMapper;
 import api.service.ConsulationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/consulations")
@@ -27,7 +31,7 @@ public class ConsulationController {
     }
 
     @PostMapping
-    public String sendConsultation(@Valid @RequestBody ConsulationRequestDto consulationDto) throws JsonProcessingException {
+    public ResponseEntity<ConsulationResponseDto> sendConsultation(@Valid @RequestBody ConsulationRequestDto consulationDto) throws JsonProcessingException {
         logger.info("CONSULATION REQUEST {} ", consulationDto);
 
         Consulation consulation = consulationMapper.mapperDtoToDomain(consulationDto);
@@ -35,7 +39,13 @@ public class ConsulationController {
         consulationService.processConsultation(consulation);
 
         logger.info("CONSULATION HAS BEEN SENT");
-        // VER O QUE RETORNAR AQUI
-        return "Consulta enviada para o Kafka!";
+
+        ConsulationResponseDto response = new ConsulationResponseDto(
+                "Consulta enviada com sucesso para o Kafka!",
+                consulation.getId(),
+                consulation.getStatusConsulation()
+        );
+
+        return ResponseEntity.ok(response);
     }
 }

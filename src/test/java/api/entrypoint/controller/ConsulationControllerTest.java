@@ -1,6 +1,7 @@
 package api.entrypoint.controller;
 
 import api.domain.model.Consulation;
+import api.mapper.ConsulationMapper;
 import api.service.ConsulationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,12 +13,14 @@ import static org.mockito.Mockito.*;
 class ConsulationControllerTest {
 
     private ConsulationService consulationService;
+    private ConsulationMapper consulationMapper;
     private ConsulationController consulationController;
 
     @BeforeEach
     void setUp() {
         consulationService = mock(ConsulationService.class);
-        consulationController = new ConsulationController(consulationService);
+        consulationMapper = mock(ConsulationMapper.class);
+        consulationController = new ConsulationController(consulationService, consulationMapper);
     }
 
 //    @Test

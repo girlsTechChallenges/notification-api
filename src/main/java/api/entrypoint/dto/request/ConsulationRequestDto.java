@@ -36,10 +36,6 @@ public record ConsulationRequestDto(
         String reason,
 
         @NotBlank(message = "Status cannot be null or empty")
-        @Pattern(
-                regexp = "SCHEDULED|CANCELLED|CARRIED_OUT",
-                message = "Status must be SCHEDULED, CANCELLED, or DONE"
-        )
         String statusConsulation
 ) {
     public record PacientDto(

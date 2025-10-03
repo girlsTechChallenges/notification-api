@@ -1,5 +1,5 @@
 package api.enums;
 
 public enum ConsulationStatus {
-    SCHEDULED, CANCELLED,
+    SCHEDULED, CANCELLED, CARRIED_OUT
 }

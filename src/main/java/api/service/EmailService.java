@@ -30,6 +30,9 @@ public class EmailService {
         if (ConsulationStatus.SCHEDULED.equals(consulation.getStatusConsulation())) {
             consulationStatus = ConsulationEmailStatus.AGENDADA;
             message.setSubject("Agendamento da Consulta");
+        } else if(ConsulationStatus.CARRIED_OUT.equals(consulation.getStatusConsulation())) {
+            consulationStatus = ConsulationEmailStatus.REALIZADA;
+            message.setSubject("Realização da Consulta");
         } else {
             consulationStatus = ConsulationEmailStatus.CANCELADA;
             message.setSubject("Cancelamento da Consulta");
