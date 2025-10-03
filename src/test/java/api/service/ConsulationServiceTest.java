@@ -1,6 +1,6 @@
 package api.service;
 
-import api.domain.model.Consulation;
+import api.domain.model.Consult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -14,12 +14,12 @@ import java.time.LocalDateTime;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-class ConsulationServiceTest {
+class ConsultServiceTest {
 
     private KafkaTemplate<String, String> kafkaTemplate;
     private ObjectMapper objectMapper;
     private EmailService emailService;
-    private ConsulationService consulationService;
+    private ConsultService consultService;
 
     @BeforeEach
     void setUp() {
@@ -29,24 +29,24 @@ class ConsulationServiceTest {
         objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        consulationService = new ConsulationService(kafkaTemplate, objectMapper, emailService);
-        consulationService.topic = "consulations-topic";
+        consultService = new ConsultService(kafkaTemplate, objectMapper, emailService);
+        consultService.topic = "consults-topic";
     }
 
 //    @Test
-//    void sendConsulation_ShouldSendMessageToKafka() throws JsonProcessingException {
-//        Consulation consulation = new Consulation();
-//        consulation.setId(1L);
-//        consulation.setNameProfessional("Isabella");
-//        consulation.setNomeProfissional("Dr. Silva");
-//        consulation.setDataHora(LocalDateTime.parse("2025-09-21T20:00"));
-//        consulation.setReason("Consulta de rotina");
+//    void sendConsult_ShouldSendMessageToKafka() throws JsonProcessingException {
+//        Consult consult = new Consult();
+//        consult.setId(1L);
+//        consult.setNameProfessional("Isabella");
+//        consult.setNomeProfissional("Dr. Silva");
+//        consult.setDataHora(LocalDateTime.parse("2025-09-21T20:00"));
+//        consult.setReason("Consulta de rotina");
 //
-//        consulationService.sendConsulation(consulation);
+//        consultService.sendConsult(consult);
 //
 //        // Captura a mensagem enviada para Kafka
 //        ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
-//        verify(kafkaTemplate, times(1)).send(eq("consulations-topic"), messageCaptor.capture());
+//        verify(kafkaTemplate, times(1)).send(eq("consults-topic"), messageCaptor.capture());
 //
 //        String sentMessage = messageCaptor.getValue();
 //        assertThat(sentMessage)
@@ -57,20 +57,20 @@ class ConsulationServiceTest {
 
 //    @Test
 //    void processConsultation_ShouldSendMessageToKafkaAndSendEmail() throws JsonProcessingException {
-//        Consulation consulation = new Consulation();
-//        consulation.setId(1L);
-//        consulation.setNameProfessional("Isabella");
-//        consulation.setNomeProfissional("Dr. Silva");
-//        consulation.setDataHora(LocalDateTime.parse("2025-09-21T20:00"));
-//        consulation.setReason("Consulta de rotina");
+//        Consult consult = new Consult();
+//        consult.setId(1L);
+//        consult.setNameProfessional("Isabella");
+//        consult.setNomeProfissional("Dr. Silva");
+//        consult.setDataHora(LocalDateTime.parse("2025-09-21T20:00"));
+//        consult.setReason("Consulta de rotina");
 //
-//        consulationService.processConsultation(consulation);
+//        consultService.processConsultation(consult);
 //
 //        // Verifica envio para Kafka
-//        verify(kafkaTemplate, times(1)).send(eq("consulations-topic"), anyString());
+//        verify(kafkaTemplate, times(1)).send(eq("consults-topic"), anyString());
 //
 //        // Verifica envio de email
-//        verify(emailService, times(1)).sendEmail(consulation);
+//        verify(emailService, times(1)).sendEmail(consult);
 //    }
 }
 

@@ -19,7 +19,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -27,12 +27,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -45,7 +45,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -53,12 +53,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -71,7 +71,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -79,12 +79,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -97,7 +97,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -105,12 +105,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -123,7 +123,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -131,12 +131,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -149,7 +149,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -157,12 +157,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -175,7 +175,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -183,12 +183,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -201,7 +201,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -209,12 +209,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -227,7 +227,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -235,12 +235,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -253,7 +253,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -261,12 +261,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -279,7 +279,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -287,12 +287,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -305,7 +305,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -313,12 +313,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -331,7 +331,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -339,12 +339,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -357,7 +357,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -365,12 +365,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -383,7 +383,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -391,12 +391,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -409,7 +409,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -417,25 +417,25 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Send E-mail without Status Consulation (null)",
+							"name": "Send E-mail without Status Consult (null)",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -443,25 +443,25 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Send E-mail without Status Consulation (empty)",
+							"name": "Send E-mail without Status Consult (empty)",
 							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -469,12 +469,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -493,7 +493,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -501,12 +501,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -519,7 +519,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -527,12 +527,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -545,7 +545,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -553,12 +553,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},
@@ -576,7 +576,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsult\": \"CANCELLED\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -584,12 +584,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/consulations",
+									"raw": "{{baseURL}}/consults",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
-										"consulations"
+										"consults"
 									]
 								}
 							},

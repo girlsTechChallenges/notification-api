@@ -1,8 +1,8 @@
 package api.entrypoint.controller;
 
-import api.domain.model.Consulation;
-import api.mapper.ConsulationMapper;
-import api.service.ConsulationService;
+import api.domain.model.Consult;
+import api.mapper.ConsultMapper;
+import api.service.ConsultService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,31 +10,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class ConsulationControllerTest {
+class ConsultControllerTest {
 
-    private ConsulationService consulationService;
-    private ConsulationMapper consulationMapper;
-    private ConsulationController consulationController;
+    private ConsultService consultService;
+    private ConsultMapper consultMapper;
+    private ConsultController consultController;
 
     @BeforeEach
     void setUp() {
-        consulationService = mock(ConsulationService.class);
-        consulationMapper = mock(ConsulationMapper.class);
-        consulationController = new ConsulationController(consulationService, consulationMapper);
+        consultService = mock(ConsultService.class);
+        consultMapper = mock(ConsultMapper.class);
+        consultController = new ConsultController(consultService, consultMapper);
     }
 
-//    @Test
-//    void testSendConsultation_ShouldCallServiceAndReturnMessage() throws JsonProcessingException {
-//        Consulation consulation = new Consulation();
-//        consulation.setId("1L");
-//        consulation.setNameProfessional("João");
-//        consulation.setNomeProfissional("Dr. Silva");
-//
-//        String response = consulationController.sendConsultation(consulation);
-//
-//        verify(consulationService, times(1)).processConsultation(consulation);
-//
-//        assertEquals("Consulta enviada para o Kafka!", response);
-//    }
 }
 

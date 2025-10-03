@@ -1,7 +1,7 @@
 package api.service;
 
-import api.domain.model.Consulation;
-import api.enums.ConsulationStatus;
+import api.domain.model.Consult;
+import api.enums.ConsultStatus;
 import api.exception.EmailNotSentException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,22 +26,22 @@ class EmailServiceTest {
         emailService = new EmailService(mailSender);
     }
 
-//    private Consulation createConsulation(ConsulationStatus status) {
-//        Consulation c = new Consulation();
+//    private Consult createConsult(ConsultStatus status) {
+//        Consult c = new Consult();
 //        c.setNameProfessional("Isabella");
 //        c.setNomeProfissional("Dr. Silva");
 //        c.setDataHora(LocalDateTime.of(2025, 9, 21, 14, 30));
 //        c.setReason("Consulta de rotina");
 //        c.setEmailPaciente("isabella@example.com");
-//        c.setStatusConsulation(status);
+//        c.setStatusConsult(status);
 //        return c;
 //    }
 
 //    @Test
 //    void sendEmail_ShouldSendEmailForAgendada() {
-//        Consulation consulation = createConsulation(ConsulationStatus.SCHEDULED);
+//        Consult consult = createConsult(ConsultStatus.SCHEDULED);
 //
-//        emailService.sendEmail(consulation);
+//        emailService.sendEmail(consult);
 //
 //        ArgumentCaptor<SimpleMailMessage> captor = ArgumentCaptor.forClass(SimpleMailMessage.class);
 //        verify(mailSender, times(1)).send(captor.capture());
@@ -54,9 +54,9 @@ class EmailServiceTest {
 //
 //    @Test
 //    void sendEmail_ShouldSendEmailForCancelada() {
-//        Consulation consulation = createConsulation(ConsulationStatus.CANCELLED);
+//        Consult consult = createConsult(ConsultStatus.CANCELLED);
 //
-//        emailService.sendEmail(consulation);
+//        emailService.sendEmail(consult);
 //
 //        ArgumentCaptor<SimpleMailMessage> captor = ArgumentCaptor.forClass(SimpleMailMessage.class);
 //        verify(mailSender).send(captor.capture());
@@ -68,11 +68,11 @@ class EmailServiceTest {
 //
 //    @Test
 //    void sendEmail_ShouldThrowExceptionWhenMailFails() {
-//        Consulation consulation = createConsulation(ConsulationStatus.SCHEDULED);
+//        Consult consult = createConsult(ConsultStatus.SCHEDULED);
 //        doThrow(new org.springframework.mail.MailSendException("Falha no envio"))
 //                .when(mailSender).send(any(SimpleMailMessage.class));
 //
-//        assertThrows(EmailNotSentException.class, () -> emailService.sendEmail(consulation));
+//        assertThrows(EmailNotSentException.class, () -> emailService.sendEmail(consult));
 //    }
 }
 

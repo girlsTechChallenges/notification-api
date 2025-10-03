@@ -1,18 +1,17 @@
 package api.domain.model;
 
-import api.enums.ConsulationStatus;
 import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Consulation {
+public class Consult {
     private String id;
     private String nameProfessional;
     private Patient pacient;
     private String localTime;
     private String date;
     private String reason;
-    private String statusConsulation;
+    private String statusConsult;
 }

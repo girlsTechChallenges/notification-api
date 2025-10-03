@@ -53,7 +53,7 @@ mvn clean spring-boot:run
 
 A API utiliza a **arquitetura MVC**:
 
-- **Model (Domain)**: Contém os modelos de domínio, como `Consulation` e `Patient`.
+- **Model (Domain)**: Contém os modelos de domínio, como `Consult` e `Patient`.
 - **Controller (Entrypoint)**: Expõe endpoints REST, recebe requisições HTTP e envia para os serviços.
 - **Service**: Contém a lógica de negócio, envio de mensagens Kafka e envio de emails.
 - **Mapper**: Converte DTOs em objetos de domínio e vice-versa.
@@ -66,9 +66,9 @@ A API utiliza a **arquitetura MVC**:
 ```
 api/
 ├── domain/
-│   └── model/          # Modelos de domínio (Consulation, Patient)
+│   └── model/          # Modelos de domínio (Consult, Patient)
 ├── entrypoint/
-│   └── controller/     # Controllers REST (ConsulationController)
+│   └── controller/     # Controllers REST (ConsultController)
 ├── entrypoint/dto/     # DTOs de requisição e resposta
 ├── service/            # Serviços de negócio e envio de emails
 ├── mapper/             # Mapeamento DTO <-> Domain
@@ -82,7 +82,7 @@ api/
 ### Enviar consulta 
 
 ```
-POST /consulations
+POST /consults
 ```
 
 **Request Body**:
@@ -98,7 +98,7 @@ POST /consulations
 "localTime": "21:00:00",
 "date": "2025-10-05",
 "reason": "Consulta de rotina",
-"statusConsulation": "SCHEDULED"
+"statusConsult": "SCHEDULED"
 }
 ```
 
@@ -108,15 +108,15 @@ POST /consulations
 {
 "message": "Consulta enviada com sucesso para o Kafka!",
 "id": "1",
-"statusConsulation": "SCHEDULED"
+"statusConsult": "SCHEDULED"
 }
 ```
  
 **Fluxo do Endpoint:**
 
-- O **ConsulationController** recebe a requisição.
-- O **DTO** é mapeado para o modelo Consulation.
-- O **ConsulationService** envia a mensagem para o **Kafka**.
+- O **ConsultController** recebe a requisição.
+- O **DTO** é mapeado para o modelo Consult.
+- O **ConsultService** envia a mensagem para o **Kafka**.
 - O **EmailService** envia o email para o paciente via **Mailtrap**.
 - Retorna a resposta confirmando que a consulta foi processada.
 
@@ -136,8 +136,8 @@ POST /consulations
 ## Configuração ⚙️
 
 ### Kafka
-app.kafka.topics.consulations=consulations-topic
-app.kafka.groupid=consulations-group
+app.kafka.topics.consults=consults-topic
+app.kafka.groupid=consults-group
 
 ### Email
 spring.mail.host=smtp.mailtrap.io

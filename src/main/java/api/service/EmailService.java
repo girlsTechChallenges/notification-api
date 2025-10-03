@@ -1,8 +1,8 @@
 package api.service;
 
-import api.domain.model.Consulation;
-import api.enums.ConsulationEmailStatus;
-import api.enums.ConsulationStatus;
+import api.domain.model.Consult;
+import api.enums.ConsultEmailStatus;
+import api.enums.ConsultStatus;
 import api.exception.EmailNotSentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,33 +20,33 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    private SimpleMailMessage chooseMessageEmail(Consulation consulation) {
+    private SimpleMailMessage chooseMessageEmail(Consult consult) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(consulation.getPacient().getEmail());
+        message.setTo(consult.getPacient().getEmail());
 
-        ConsulationEmailStatus consulationStatus;
+        ConsultEmailStatus consultStatus;
 
-        ConsulationStatus status = ConsulationStatus.valueOf(consulation.getStatusConsulation());
+        ConsultStatus status = ConsultStatus.valueOf(consult.getStatusConsult());
 
-        if (ConsulationStatus.SCHEDULED.equals(status)) {
-            consulationStatus = ConsulationEmailStatus.AGENDADA;
+        if (ConsultStatus.SCHEDULED.equals(status)) {
+            consultStatus = ConsultEmailStatus.AGENDADA;
             message.setSubject("Agendamento da Consulta");
-        } else if (ConsulationStatus.CARRIED_OUT.equals(status)) {
-            consulationStatus = ConsulationEmailStatus.REALIZADA;
+        } else if (ConsultStatus.CARRIED_OUT.equals(status)) {
+            consultStatus = ConsultEmailStatus.REALIZADA;
             message.setSubject("Realização da Consulta");
         } else {
-            consulationStatus = ConsulationEmailStatus.CANCELADA;
+            consultStatus = ConsultEmailStatus.CANCELADA;
             message.setSubject("Cancelamento da Consulta");
         }
 
         String emailBody = String.format(
                 "Olá %s,%nSua consulta foi %s com %s.%n%nData: %s Hora: %s%nMotivo: %s%n%nAtenciosamente,%nSistema Hospitalar.",
-                consulation.getPacient().getName(),
-                consulationStatus,
-                consulation.getNameProfessional(),
-                consulation.getDate(),
-                consulation.getLocalTime(),
-                consulation.getReason()
+                consult.getPacient().getName(),
+                consultStatus,
+                consult.getNameProfessional(),
+                consult.getDate(),
+                consult.getLocalTime(),
+                consult.getReason()
         );
 
         message.setText(emailBody);
@@ -54,7 +54,7 @@ public class EmailService {
         return message;
     }
 
-    public void sendEmail(Consulation dto) {
+    public void sendEmail(Consult dto) {
         try {
             SimpleMailMessage message = chooseMessageEmail(dto);
             mailSender.send(message);
