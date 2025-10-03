@@ -1,181 +1,153 @@
-# Estrutura da API de Notificação (MVC)
+# API de Notificação de Consultas Hospitalares 🔔🏥
 
+Esta API é responsável por gerenciar notificações de consultas de pacientes em um hospital. Através da integração com **Kafka** e **Mailtrap**, a API envia emails automatizados aos pacientes informando sobre o agendamento, cancelamento ou realização de consultas.
 
-## 📂 Explicação de cada pasta
+A aplicação segue a **arquitetura MVC (Model-View-Controller)** para organização do código e separação de responsabilidades.
 
-### config/ 
-→ onde você deixa a configuração do Kafka (KafkaConsumerConfig), Swagger/OpenAPI e Beans gerais.
+## Execução
 
-### controller/ 
-→ classes com endpoints REST (@RestController), ex.:
+1. Clonar o repositório 
 
-### POST /
-notificacoes para receber a notificação.
-
-### dto/ 
-→ objetos de entrada/saída do controller (NotificacaoRequest, NotificacaoResponse).
-
-### service/ 
-→ onde fica a lógica da aplicação (ex.: processar e salvar notificação, chamar consumer).
-
-### repository/ 
-→ interfaces JPA ou implementação de persistência.
-
-### model/ 
-→ entidades mapeadas para banco (caso você grave histórico de notificações).
-
-### consumer/ 
-→ classes que consomem mensagens do Kafka (com @KafkaListener).
-
-### exception/ 
-→ CustomException, GlobalExceptionHandler com @ControllerAdvice.
-
-```
-src/main/java/api
-├── config/             # Beans de configuração (Kafka, Swagger, etc.)
-├── controller/         # Endpoints REST (ex: NotificacaoController)
-├── dto/                # Objetos de transferência de dados (Request/Response)
-├── service/            # Regras de negócio (NotificacaoService)
-├── repository/         # Repositórios JPA ou conexões com DB
-├── model/              # Entidades JPA ou modelos usados pelo banco
-├── consumer/           # Kafka consumers (mockado agora, real depois)
-├── exception/          # Exceptions customizadas e handlers
-└── SistemaHospitalarKafkaApplication.java
+```bash
+git clone https://github.com/girlsTechChallenges/notification-api.git
 ```
 
-### Arquitetura do Serviço 
+2. Configurar Kafka e Mailtrap com as credenciais necessárias
 
-![Texto Alternativo](./assets/diagrama-kafka.drawio.para-readme.png)
+3. Executar a aplicação
 
-## 1️⃣ Visão geral da aplicação
+## Configuração do Kafka e Zookeeper 🎈
 
-Sua aplicação segue o **padrão MVC** com Kafka integrado:
+Antes de executar a aplicação, é necessário subir o Kafka e o Zookeeper.  
+
+Se você estiver usando **Docker Compose**, execute:
+
+```bash
+docker-compose up -d kafka zookeeper
+```
+
+Após isso, basta rodar a aplicação: 
+
+```bash
+mvn clean spring-boot:run
+```
+
+---
+
+## Tecnologias Utilizadas 💻
+
+- **Java 21**
+- **Spring Boot**: Framework principal para construção da API.
+- **Spring Kafka**: Integração com Kafka para comunicação assíncrona.
+- **Spring Mail (JavaMailSender)**: Envio de emails através do Mailtrap.
+- **Lombok**: Redução de boilerplate (getters, setters, construtores, etc.).
+- **Jackson**: Serialização e desserialização de objetos JSON.
+- **Kafka**: Broker para envio e consumo de mensagens.
+- **Mailtrap**: Sandbox para envio de emails em ambiente de desenvolvimento.
+- **Validation (Jakarta Validation)**: Validação de DTOs.
+- **SLF4J/Logback**: Logs estruturados.
+
+---
+
+## Arquitetura 🏛️
+
+A API utiliza a **arquitetura MVC**:
+
+- **Model (Domain)**: Contém os modelos de domínio, como `Consulation` e `Patient`.
+- **Controller (Entrypoint)**: Expõe endpoints REST, recebe requisições HTTP e envia para os serviços.
+- **Service**: Contém a lógica de negócio, envio de mensagens Kafka e envio de emails.
+- **Mapper**: Converte DTOs em objetos de domínio e vice-versa.
+- **Consumer Kafka**: Consome mensagens do tópico Kafka para processamento posterior.
+
+---
+
+## Estrutura de Diretórios 🏛️
 
 ```
 api/
-├── dto/              --> Modelagem dos dados
-├── producer/config/  --> Configuração do Kafka
-├── producer/controller/ --> Controlador REST que envia mensagens
-├── producer/services/   --> Serviço/Consumer que recebe mensagens
-```
-
-O fluxo geral é:
-
-1. Um cliente (por exemplo, Postman ou frontend) faz uma requisição **POST** para `/consulations`.
-2. O **controller** recebe o JSON (`ConsulationDTO`) do body.
-3. O controller transforma o objeto em **JSON string** e envia para o **tópico Kafka** `consulations`.
-4. O **consumer** está inscrito nesse tópico e recebe as mensagens assim que chegam.
-5. O consumer faz alguma ação com a mensagem — no seu caso, apenas imprime no console (mock/teste).
-
----
-
-## 2️⃣ Detalhe de cada arquivo
-
-### 📄 2.1 `ConsulationDTO.java`
-
-* **Local:** `api.domain`
-* **Função:** representa o **modelo de dados da consulta**, que será enviado pelo producer para Kafka.
-* Contém:
-
-```java
-private Long id;
-private String nomePaciente;
-private String nomeProfissional;
-private LocalDateTime dataHora;
-private String motivo;
-private String status;
-```
-
-* **Lombok** (`@Getter`, `@Setter`, `@AllArgsConstructor`, `@NoArgsConstructor`) reduz código boilerplate.
-
----
-
-### 📄 2.2 `ConsulationStatus.java`
-
-* Enum que define os **status possíveis da consulta**: `AGENDADA`, `REALIZADA`, `EDITADA`.
-* Serve para padronizar os valores enviados via Kafka.
-
----
-
-### 📄 2.3 `KafkaProducerConfig.java`
-
-* **Local:** `api.producer.configuration`
-* **Função:** configura o **producer Kafka** dentro do Spring Boot.
-* Define:
-
-1. `ProducerFactory<String, String>` → cria produtores que enviam mensagens.
-2. `KafkaTemplate<String, String>` → classe de alto nível do Spring Kafka usada para **enviar mensagens** ao tópico.
-
-* Configurações importantes:
+├── domain/
+│   └── model/          # Modelos de domínio (Consulation, Patient)
+├── entrypoint/
+│   └── controller/     # Controllers REST (ConsulationController)
+├── entrypoint/dto/     # DTOs de requisição e resposta
+├── service/            # Serviços de negócio e envio de emails
+├── mapper/             # Mapeamento DTO <-> Domain
+├── enums/              # Status de consulta e email
+└── exception/          # Exceções customizadas
 
 ```
-configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-```
 
-> **Bootstrap server** é o endereço do broker Kafka.
+## Endpoints 🏁
 
----
-
-### 📄 2.4 `ConsulationController.java`
-
-* **Local:** `api.producer.controller`
-* **Função:** camada **REST (controller)** que recebe requisições HTTP e envia para Kafka.
-* Fluxo:
+### Enviar consulta 
 
 ```
-@PostMapping
-public String sendConsultation(@RequestBody ConsulationDTO consulta)
+POST /consulations
 ```
 
-1. Recebe `ConsulationDTO` do client.
-2. Converte para JSON (`ObjectMapper`).
-3. Envia para o **tópico `consulations`** via `kafkaTemplate.send(TOPICO, mensagem)`.
-
----
-
-### 📄 2.5 `ConsulationConsumer.java`
-
-* **Local:** `api.producer.services`
-* **Função:** **listener Kafka** que consome mensagens do tópico.
-* Configuração:
+**Request Body**:
 
 ```
-@KafkaListener(topics = "consulations", groupId = "group-consulation")
-public void consume(String mensagem)
+{
+"id": "1",
+"nameProfessional": "Dra. Maria Silva",
+"pacient": {
+"name": "Jorginho",
+"email": "jorginho123@gmail.com"
+},
+"localTime": "21:00:00",
+"date": "2025-10-05",
+"reason": "Consulta de rotina",
+"statusConsulation": "SCHEDULED"
+}
 ```
 
-* Sempre que uma mensagem chega no tópico, esse método é chamado automaticamente.
-* No seu mock, ele só **imprime a mensagem no console**, mas em produção poderia salvar no banco, enviar notificações, etc.
+**Response Body**:
 
----
+```
+{
+"message": "Consulta enviada com sucesso para o Kafka!",
+"id": "1",
+"statusConsulation": "SCHEDULED"
+}
+```
+ 
+**Fluxo do Endpoint:**
 
-## 3️⃣ Como o Kafka funciona nesse fluxo
+- O **ConsulationController** recebe a requisição.
+- O **DTO** é mapeado para o modelo Consulation.
+- O **ConsulationService** envia a mensagem para o **Kafka**.
+- O **EmailService** envia o email para o paciente via **Mailtrap**.
+- Retorna a resposta confirmando que a consulta foi processada.
 
-1. **Producer** (via `KafkaTemplate`) envia mensagem JSON para o tópico `consulations`.
-2. Kafka armazena a mensagem no tópico, que é **partitionado e replicado** no cluster.
-3. **Consumer** (via `@KafkaListener`) lê a mensagem do tópico e executa a lógica definida.
+## Email Notification ✉️
 
-> Ponto importante: Kafka permite **vários consumers** lendo o mesmo tópico, podendo formar **grupos de consumidores** (`groupId`) que dividem as mensagens.
+- Emails são enviados usando **JavaMailSender**.
+- O conteúdo do email muda conforme o status da consulta:
+    - `SCHEDULED` → "Agendamento da Consulta"
+    - `CARRIED_OUT` → "Realização da Consulta"
+    - `CANCELLED` → "Cancelamento da Consulta"
+- O corpo do email inclui:
+    - Nome do paciente
+    - Nome do profissional
+    - Data, horário e motivo da consulta
+    - Assinatura do sistema hospitalar
 
----
+## Configuração ⚙️
 
-## 4️⃣ Pontos-chave da aplicação
+### Kafka
+app.kafka.topics.consulations=consulations-topic
+app.kafka.groupid=consulations-group
 
-* **Controller** → Recebe dados do usuário e envia ao Kafka.
-* **ProducerConfig** → Configura o Kafka dentro do Spring Boot.
-* **DTO + Enum** → Padronizam os dados que serão enviados.
-* **Consumer** → Escuta o tópico e processa mensagens (mock).
-* **Kafka** → Fila de mensagens que desacopla produtor de consumidor, permitindo escalabilidade e persistência.
+### Email
+spring.mail.host=smtp.mailtrap.io
+spring.mail.port=2525
+spring.mail.username=<SEU_USERNAME>
+spring.mail.password=<SEU_PASSWORD>
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
 
----
 
-Se você quiser, Isabella, posso te **desenhar um diagrama MVC + Kafka** mostrando exatamente o fluxo:
 
-* Endpoint HTTP → Controller → Kafka → Consumer → Ação.
 
-Isso deixa muito mais fácil de visualizar o projeto.
-
-Quer que eu faça esse diagrama?
 

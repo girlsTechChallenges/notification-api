@@ -24,20 +24,20 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(consulation.getPacient().getEmail());
 
-        // TODO: revalidar esses cenários
         ConsulationEmailStatus consulationStatus;
 
-        if (ConsulationStatus.SCHEDULED.equals(consulation.getStatusConsulation())) {
+        ConsulationStatus status = ConsulationStatus.valueOf(consulation.getStatusConsulation());
+
+        if (ConsulationStatus.SCHEDULED.equals(status)) {
             consulationStatus = ConsulationEmailStatus.AGENDADA;
             message.setSubject("Agendamento da Consulta");
-        } else if(ConsulationStatus.CARRIED_OUT.equals(consulation.getStatusConsulation())) {
+        } else if (ConsulationStatus.CARRIED_OUT.equals(status)) {
             consulationStatus = ConsulationEmailStatus.REALIZADA;
             message.setSubject("Realização da Consulta");
         } else {
             consulationStatus = ConsulationEmailStatus.CANCELADA;
             message.setSubject("Cancelamento da Consulta");
         }
-
 
         String emailBody = String.format(
                 "Olá %s,%nSua consulta foi %s com %s.%n%nData: %s Hora: %s%nMotivo: %s%n%nAtenciosamente,%nSistema Hospitalar.",
