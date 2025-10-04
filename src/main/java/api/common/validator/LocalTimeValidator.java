@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class LocalTimeValidator implements ConstraintValidator<ValidLocalTime, String> {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
@@ -16,7 +17,7 @@ public class LocalTimeValidator implements ConstraintValidator<ValidLocalTime, S
         }
 
         try {
-            LocalTime.parse(value, DateTimeFormatter.ISO_LOCAL_TIME);
+            LocalTime.parse(value, FORMATTER);
             return true;
         } catch (DateTimeParseException e) {
             return false;
