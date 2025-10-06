@@ -65,8 +65,8 @@ class ConsultServiceTest {
 
         consultService.processConsult(consult);
 
-        verify(kafkaTemplate, times(1)).send(eq("test-topic"), eq(mensagemJson));
-        verify(emailService, times(1)).sendEmail(consult);
+        verify(kafkaTemplate).send("test-topic", mensagemJson);
+        verify(emailService).sendEmail(consult);
     }
 
     @Test

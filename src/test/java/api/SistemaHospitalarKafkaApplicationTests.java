@@ -1,4 +1,5 @@
-import api.MainApplication;
+package api;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
