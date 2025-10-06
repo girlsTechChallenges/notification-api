@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 
 class ConsultServiceTest {
 
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate kafkaTemplate;
     private ObjectMapper objectMapper;
     private EmailService emailService;
     private ConsultService consultService;
@@ -29,7 +29,7 @@ class ConsultServiceTest {
         consultService.topic = "test-topic"; // definindo topic para o teste
     }
 
-    private Consult createConsult(String status) {
+    private Consult createConsult() {
         Patient pacient = new Patient("Jorginho", "jorginho@gmail.com");
         Consult consult = new Consult();
         consult.setId("1");
@@ -38,13 +38,13 @@ class ConsultServiceTest {
         consult.setLocalTime("14:30:00");
         consult.setDate("2025-10-03");
         consult.setReason("Consulta de rotina");
-        consult.setStatusConsult(status);
+        consult.setStatusConsult("SCHEDULED");
         return consult;
     }
 
     @Test
     void shouldSendConsultMessageToKafka() throws JsonProcessingException {
-        Consult consult = createConsult("SCHEDULED");
+        Consult consult = createConsult();
         String mensagemJson = "{\"id\":\"1\"}";
         when(objectMapper.writeValueAsString(consult)).thenReturn(mensagemJson);
 
@@ -59,7 +59,7 @@ class ConsultServiceTest {
 
     @Test
     void shouldProcessConsultBySendingToKafkaAndSendingEmail() throws JsonProcessingException {
-        Consult consult = createConsult("SCHEDULED");
+        Consult consult = createConsult();
         String mensagemJson = "{\"id\":\"1\"}";
         when(objectMapper.writeValueAsString(consult)).thenReturn(mensagemJson);
 
@@ -71,12 +71,10 @@ class ConsultServiceTest {
 
     @Test
     void shouldThrowJsonProcessingExceptionWhenSendConsultFails() throws JsonProcessingException {
-        Consult consult = createConsult("SCHEDULED");
+        Consult consult = createConsult();
         when(objectMapper.writeValueAsString(consult)).thenThrow(new JsonProcessingException("Erro") {});
 
-        org.junit.jupiter.api.Assertions.assertThrows(JsonProcessingException.class, () -> {
-            consultService.sendConsult(consult);
-        });
+        org.junit.jupiter.api.Assertions.assertThrows(JsonProcessingException.class, () -> consultService.sendConsult(consult));
 
         verify(kafkaTemplate, never()).send(anyString(), anyString());
         verify(emailService, never()).sendEmail(any());

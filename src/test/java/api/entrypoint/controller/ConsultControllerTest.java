@@ -4,7 +4,6 @@ import api.domain.model.Consult;
 import api.entrypoint.dto.request.ConsultRequestDto;
 import api.entrypoint.dto.request.ConsultRequestDto.PacientDto;
 import api.mapper.ConsultMapper;
-import api.service.ConsultService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,13 +28,9 @@ class ConsultControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private ConsultService consultService;
-
-    @MockBean
     private ConsultMapper consultMapper;
 
     private ConsultRequestDto validRequestDto;
-    private Consult validConsult;
 
     @BeforeEach
     void setUp() {
@@ -51,7 +46,7 @@ class ConsultControllerTest {
                 "SCHEDULED"
         );
 
-        validConsult = new Consult();
+        Consult validConsult = new Consult();
         validConsult.setId("1");
         validConsult.setStatusConsult("SCHEDULED");
 
