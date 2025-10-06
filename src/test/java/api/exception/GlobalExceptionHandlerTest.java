@@ -37,7 +37,7 @@ class GlobalExceptionHandlerTest {
 
     @Test
     void testHandleGenericException() {
-        Exception ex = new Exception("Algum erro");
+        Exception ex = new Exception("Erro ao inciar a aplicação");
 
         ResponseEntity<ApiErrorMessage> response = handler.handleGenericException(ex);
 

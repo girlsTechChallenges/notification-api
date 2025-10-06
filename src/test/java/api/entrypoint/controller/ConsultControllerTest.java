@@ -13,7 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
+import api.service.ConsultService;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -28,9 +28,13 @@ class ConsultControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
+    private ConsultService consultService;
+
+    @MockBean
     private ConsultMapper consultMapper;
 
     private ConsultRequestDto validRequestDto;
+    private Consult validConsult;
 
     @BeforeEach
     void setUp() {
@@ -46,7 +50,7 @@ class ConsultControllerTest {
                 "SCHEDULED"
         );
 
-        Consult validConsult = new Consult();
+        validConsult = new Consult();
         validConsult.setId("1");
         validConsult.setStatusConsult("SCHEDULED");
 
