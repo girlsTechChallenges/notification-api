@@ -1,0 +1,663 @@
+{
+	"info": {
+		"_postman_id": "0feb0095-cd97-47d8-a079-328f971fb32e",
+		"name": "Hospital Notification API 🔔",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24546161"
+	},
+	"item": [
+		{
+			"name": "🧪 Test Scenarios",
+			"item": [
+				{
+					"name": "Malformed Requests - Null or Empty",
+					"item": [
+						{
+							"name": "Send E-mail with a empty JSON",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without ID (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without ID (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Name Professional (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Name Professional (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Patient (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Patient (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Patient Name (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Patient Name (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Patient Email (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Patient Email (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without LocalTime (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without LocalTime (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Date (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Date (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Reason (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Status Consulation (null)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail without Status Consulation (empty)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Testes de requisições mal formadas"
+				},
+				{
+					"name": "Malformed Requests - Invalid Format",
+					"item": [
+						{
+							"name": "Send E-mail with Hour out of interval",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail with a invalid Date",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail with a invalid E-mail format",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Validation Tests - Success",
+					"item": [
+						{
+							"name": "Send E-mail for Patient - SCHEDULED",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail for Patient - CANCELLED",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send E-mail for Patient - CARRIED_OUT",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nameProfessional\": \"Dra. Maria Silva\",\r\n   \"pacient\": {\r\n    \"name\": \"Jorginho\", \r\n    \"email\": \"jorginho123@gmail.com\"\r\n  },\r\n  \"localTime\": \"21:00:00\",\r\n \"date\": \"2025-09-21\",\r\n \"reason\": \"cancelada por conflito de horário\",\r\n \"statusConsulation\": \"CANCELLED\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/consulations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"consulations"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "Cenários de teste especiais"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
