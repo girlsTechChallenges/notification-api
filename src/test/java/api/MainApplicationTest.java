@@ -10,17 +10,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @SpringBootTest(classes = MainApplication.class)
-class MainApplicationTests {
+class MainApplicationTest {
 
 	private final ApplicationContext context;
 
-	MainApplicationTests(ApplicationContext context) {
+	MainApplicationTest(ApplicationContext context) {
 		this.context = context;
 	}
 
 	@Test
 	void contextLoads() {
-		// Verifica se o contexto do Spring foi carregado corretamente
 		assertThat(context).isNotNull();
 	}
 

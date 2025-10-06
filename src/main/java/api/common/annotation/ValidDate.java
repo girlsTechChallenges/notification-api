@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidDate {
-    String message() default "Date is invalid, this time does not exist";
+    String message() default "Date is invalid, this date does not exist";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

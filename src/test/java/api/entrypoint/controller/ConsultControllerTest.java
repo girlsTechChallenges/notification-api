@@ -73,7 +73,6 @@ class ConsultControllerTest {
 
     @Test
     void shouldReturn400WhenRequestIsInvalid() throws Exception {
-        // Exemplo: id vazio -> deve falhar validação
         ConsultRequestDto invalidRequest = new ConsultRequestDto(
                 "",
                 "Dra. Maria Silva",
