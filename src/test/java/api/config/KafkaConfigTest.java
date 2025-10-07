@@ -16,10 +16,8 @@ class KafkaConfigTest {
     void consumerFactory_shouldContainExpectedProperties() {
         ConsumerFactory<String, String> consumerFactory = kafkaConfig.consumerFactory();
 
-        // Verifica se a factory não é nula
         assertNotNull(consumerFactory);
 
-        // Verifica propriedades específicas
         var props = ((org.springframework.kafka.core.DefaultKafkaConsumerFactory<String, String>) consumerFactory).getConfigurationProperties();
         assertEquals("localhost:9092", props.get(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG));
         assertEquals("my-group", props.get(ConsumerConfig.GROUP_ID_CONFIG));
@@ -36,7 +34,6 @@ class KafkaConfigTest {
         assertNotNull(factory);
         assertNotNull(factory.getContainerProperties());
 
-        // Verifica se o AckMode está manual
         assertEquals(
                 org.springframework.kafka.listener.ContainerProperties.AckMode.MANUAL,
                 factory.getContainerProperties().getAckMode()

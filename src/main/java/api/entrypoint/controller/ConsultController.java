@@ -5,7 +5,6 @@ import api.entrypoint.dto.request.ConsultRequestDto;
 import api.entrypoint.dto.response.ConsultResponseDto;
 import api.mapper.ConsultMapper;
 import api.service.ConsultService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +25,7 @@ public class ConsultController {
     }
 
     @PostMapping
-    public ResponseEntity<ConsultResponseDto> sendConsultation(@Valid @RequestBody ConsultRequestDto consultDto) throws JsonProcessingException {
+    public ResponseEntity<ConsultResponseDto> sendConsultation(@Valid @RequestBody ConsultRequestDto consultDto) {
         logger.info("CONSULT REQUEST {} ", consultDto);
 
         Consult consult = consultMapper.mapperDtoToDomain(consultDto);

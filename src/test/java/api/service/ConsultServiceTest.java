@@ -5,8 +5,6 @@ import api.domain.model.Patient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mockito;
 import org.springframework.kafka.support.Acknowledgment;
 
 import java.util.concurrent.BlockingQueue;
@@ -27,16 +25,13 @@ class ConsultServiceTest {
 
     @Test
     void processConsult_shouldAddConsultToQueue() {
-        // Arrange
         Patient pacient = new Patient("Jorginho", "jorginho@gmail.com");
         Consult consult = new Consult();
         consult.setId("1");
         consult.setPacient(pacient);
 
-        // Act
         consultService.processConsult(consult);
 
-        // Assert
         BlockingQueue<Consult> queue = consultService.getEmailQueue();
         assertEquals(1, queue.size());
         assertEquals("1", queue.peek().getId());
@@ -44,7 +39,6 @@ class ConsultServiceTest {
 
     @Test
     void consume_shouldProcessMessageAndAck() throws Exception {
-        // Arrange
         Patient pacient = new Patient("Jorginho", "jorginho@gmail.com");
         Consult consult = new Consult();
         consult.setId("1");
@@ -54,10 +48,8 @@ class ConsultServiceTest {
 
         Acknowledgment ack = mock(Acknowledgment.class);
 
-        // Act
         consultService.consume(message, ack);
 
-        // Assert
         BlockingQueue<Consult> queue = consultService.getEmailQueue();
         assertEquals(1, queue.size());
         assertEquals("1", queue.peek().getId());
@@ -67,14 +59,11 @@ class ConsultServiceTest {
 
     @Test
     void consume_shouldHandleInvalidMessage() {
-        // Arrange
         String invalidMessage = "invalid json";
         Acknowledgment ack = mock(Acknowledgment.class);
 
-        // Act
         assertDoesNotThrow(() -> consultService.consume(invalidMessage, ack));
 
-        // Assert: fila deve continuar vazia e ack não chamado
         assertTrue(consultService.getEmailQueue().isEmpty());
         verify(ack, never()).acknowledge();
     }

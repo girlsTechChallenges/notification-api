@@ -120,7 +120,6 @@
 						</goals>
 						<configuration>
 							<excludes>
-								<!-- Ignora todos os DTOs de request e response -->
 								<exclude>api/entrypoint/dto/**</exclude>
 							</excludes>
 							<reports>
