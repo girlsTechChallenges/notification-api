@@ -4,9 +4,7 @@ Esta API é responsável por gerenciar notificações de consultas de pacientes 
 
 A aplicação segue a **arquitetura MVC (Model-View-Controller)** para organização do código e separação de responsabilidades.
 
-1) ```Propósito```: processar as mensagens de consultas e enviar e-mails de consultas para os pacientes, com os status: ```AGENDADA```, ```REALIZADA```, ```CANCELADA```
-3) ```Arquitetura```: 
-4) ```Perfis e Configuração```: 
+```Propósito```: processar as mensagens de consultas e enviar e-mails de consultas para os pacientes, com os status: ```AGENDADA```, ```REALIZADA```, ```CANCELADA```
 
 ## Execução
 
