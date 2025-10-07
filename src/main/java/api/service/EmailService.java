@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
+
     private final JavaMailSender mailSender;
     private final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
@@ -25,7 +26,6 @@ public class EmailService {
         message.setTo(consult.getPacient().getEmail());
 
         ConsultEmailStatus consultStatus;
-
         ConsultStatus status = ConsultStatus.valueOf(consult.getStatusConsult());
 
         if (ConsultStatus.SCHEDULED.equals(status)) {
@@ -50,19 +50,17 @@ public class EmailService {
         );
 
         message.setText(emailBody);
-
         return message;
     }
 
-    public void sendEmail(Consult dto) {
+    public void sendEmail(Consult consult) {
         try {
-            SimpleMailMessage message = chooseMessageEmail(dto);
+            SimpleMailMessage message = chooseMessageEmail(consult);
             mailSender.send(message);
-            logger.info("Email enviado com sucesso!");
+            logger.info("Email enviado com sucesso para: {} (id: {})", consult.getPacient().getEmail(), consult.getId());
         } catch (MailException e) {
-            logger.info("Erro ao enviar email {}", e.getMessage());
+            logger.error("Erro ao enviar email para {}: {}", consult.getPacient().getEmail(), e.getMessage());
             throw new EmailNotSentException("Não foi possível enviar o email, tente novamente mais tarde.");
         }
     }
 }
-

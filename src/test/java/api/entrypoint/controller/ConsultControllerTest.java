@@ -3,7 +3,9 @@ package api.entrypoint.controller;
 import api.domain.model.Consult;
 import api.entrypoint.dto.request.ConsultRequestDto;
 import api.entrypoint.dto.request.ConsultRequestDto.PacientDto;
+import api.entrypoint.dto.response.ConsultResponseDto;
 import api.mapper.ConsultMapper;
+import api.service.ConsultService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,8 +15,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import api.service.ConsultService;
+
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -64,14 +68,18 @@ class ConsultControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(validRequestDto)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message").value("Consulta enviada com sucesso para o Kafka!"))
+                .andExpect(jsonPath("$.message").value("Consulta adicionada à fila para envio de e-mail!"))
                 .andExpect(jsonPath("$.consultId").value("1"))
                 .andExpect(jsonPath("$.consultStatus").value("SCHEDULED"));
 
+        // Verifica se o service foi chamado uma vez
+        verify(consultService, times(1)).processConsult(validConsult);
+        verify(consultMapper, times(1)).mapperDtoToDomain(any(ConsultRequestDto.class));
     }
 
     @Test
     void shouldReturn400WhenRequestIsInvalid() throws Exception {
+        // DTO inválido: id vazio
         ConsultRequestDto invalidRequest = new ConsultRequestDto(
                 "",
                 "Dra. Maria Silva",
@@ -86,5 +94,9 @@ class ConsultControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(invalidRequest)))
                 .andExpect(status().isBadRequest());
+
+        // Verifica que o mapper/service não foi chamado
+        verify(consultMapper, times(0)).mapperDtoToDomain(any());
+        verify(consultService, times(0)).processConsult(any());
     }
 }
