@@ -246,6 +246,7 @@ api/
  
 ## Fluxo da aplicação:
 
+---
 A aplicação é um **serviço autônomo**, responsável por **consumir mensagens do Kafka** e **enviar notificações por e-mail** aos pacientes, de forma **assíncrona e automatizada**.
 
 1.  **Inicialização da aplicação:**
@@ -255,6 +256,7 @@ A aplicação é um **serviço autônomo**, responsável por **consumir mensagen
 
   *   Não há endpoints REST — a aplicação entra em modo _listener_ e fica ativa aguardando novas mensagens na fila Kafka.
 
+---
 2.  **Consumo da fila Kafka:**
 
   *   O serviço ConsultService utiliza a anotação @KafkaListener para **escutar continuamente o tópico Kafka**.
@@ -264,6 +266,8 @@ A aplicação é um **serviço autônomo**, responsável por **consumir mensagen
 
 
   *   O _acknowledgment manual_ garante que a mensagem só é marcada como processada após ser corretamente adicionada à fila.
+
+---
 
 3.  **Agendamento do processamento:**
 
@@ -275,6 +279,7 @@ A aplicação é um **serviço autônomo**, responsável por **consumir mensagen
 
   *   Caso ocorra algum erro de envio, o item é reenfileirado para nova tentativa, garantindo **resiliência** no processo.
 
+---
 4.  **Envio do e-mail:**
 
   *   O serviço EmailService constrói o conteúdo da mensagem com base no **status da consulta** (SCHEDULED, CARRIED\_OUT ou CANCELLED) e envia o e-mail através do **Mailtrap** usando o JavaMailSender.
@@ -282,6 +287,7 @@ A aplicação é um **serviço autônomo**, responsável por **consumir mensagen
 
   *   O corpo do e-mail é montado dinamicamente com informações como nome do paciente, profissional, data, hora e motivo.
 
+---
 5.  **Logs e monitoramento:**
 
   *   Todas as etapas — consumo do Kafka, processamento da fila e envio de e-mails — são **registradas via SLF4J/Logback**, permitindo auditoria e acompanhamento em tempo real do fluxo de mensagens.
@@ -290,6 +296,7 @@ A aplicação é um **serviço autônomo**, responsável por **consumir mensagen
 flowchart TD
 
 A --> [Início da aplicação] --> B[Kafka Listener ativo]
+
 
 B -->|Mensagem recebida| C[ConsultService]
 
