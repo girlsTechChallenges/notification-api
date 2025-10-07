@@ -4,8 +4,6 @@ import api.domain.model.Consult;
 import api.domain.model.Patient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mockito;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -33,7 +31,7 @@ class EmailSchedulerTest {
     }
 
     @Test
-    void processEmails_shouldSendEmailsAndClearQueue() throws Exception {
+    void processEmails_shouldSendEmailsAndClearQueue() {
         // Arrange
         Consult consult1 = new Consult();
         consult1.setId("1");
@@ -56,7 +54,7 @@ class EmailSchedulerTest {
     }
 
     @Test
-    void processEmails_shouldDoNothingWhenQueueIsEmpty() throws Exception {
+    void processEmails_shouldDoNothingWhenQueueIsEmpty() {
         // Act
         emailScheduler.processEmails();
 
@@ -66,7 +64,7 @@ class EmailSchedulerTest {
     }
 
     @Test
-    void processEmails_shouldReaddConsultWhenEmailFails() throws Exception {
+    void processEmails_shouldReaddConsultWhenEmailFails() {
         // Arrange
         Consult consult = new Consult();
         consult.setId("1");

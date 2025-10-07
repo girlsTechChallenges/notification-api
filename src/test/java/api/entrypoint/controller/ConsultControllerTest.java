@@ -3,7 +3,6 @@ package api.entrypoint.controller;
 import api.domain.model.Consult;
 import api.entrypoint.dto.request.ConsultRequestDto;
 import api.entrypoint.dto.request.ConsultRequestDto.PacientDto;
-import api.entrypoint.dto.response.ConsultResponseDto;
 import api.mapper.ConsultMapper;
 import api.service.ConsultService;
 import com.fasterxml.jackson.databind.ObjectMapper;
