@@ -32,7 +32,7 @@ class JacksonConfigTest {
     void objectMapper_shouldDeserializeJavaTimeObjects() {
         ObjectMapper mapper = jacksonConfig.objectMapper();
 
-        String json = "\"2025-10-07\""; // formato LocalDate padrão
+        String json = "\"2025-10-07\"";
         assertDoesNotThrow(() -> {
             LocalDate date = mapper.readValue(json, LocalDate.class);
             assertEquals(2025, date.getYear());
