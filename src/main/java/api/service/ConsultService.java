@@ -16,40 +16,39 @@ public class ConsultService {
 
     private final Logger logger = LoggerFactory.getLogger(ConsultService.class);
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
-
     private final ObjectMapper objectMapper;
     private final EmailService emailService;
-//
-//    @Value("${app.kafka.topic.consults}")
-//    String topic;
 
-
-
-    public ConsultService(KafkaTemplate<String, String> kafkaTemplate, ObjectMapper objectMapper, EmailService emailService) {
-        this.kafkaTemplate = kafkaTemplate;
+    public ConsultService(ObjectMapper objectMapper, EmailService emailService) {
         this.objectMapper = objectMapper;
         this.emailService = emailService;
     }
 
-
     @KafkaListener(topics = "${app.kafka.topics.consults}", groupId = "${app.kafka.groupid}")
     public void consume(String mensagem) {
-        logger.info("Mensagem recebida do Kafka: {}", mensagem);
+        try {
+            Consult consult = objectMapper.readValue(mensagem, Consult.class);
+
+            logger.info("Mensagem recebida do Kafka: {}", mensagem);
+
+            emailService.sendEmail(consult);
+        } catch (Exception e) {
+            logger.error("Erro ao processar mensagem do Kafka: {}", e.getMessage(), e);
+        }
     }
+
+//    @KafkaListener(topics = "${app.kafka.topics.consults}", groupId = "${app.kafka.groupid}")
+//    public void consume(String mensagem) {
+//        logger.info("Mensagem recebida do Kafka: {}", mensagem);
+//    }
 
     public void sendConsult(Consult dto) throws JsonProcessingException {
         String mensagem = objectMapper.writeValueAsString(dto);
         consume(mensagem);
-
-
-        //        kafkaTemplate. (topic, mensagem);
     }
 
     public void processConsult(Consult dto) throws JsonProcessingException {
         sendConsult(dto);
         emailService.sendEmail(dto);
     }
-
-
 }
