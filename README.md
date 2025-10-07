@@ -78,7 +78,7 @@ A credencial: ```-Dsonar.login=``` deve ser gerada acessando o seu perfil no Son
 
 ---
 
-🚀 Tecnologias Utilizadas 💻
+## 🚀 Tecnologias Utilizadas 💻
 
 *   **Java 21** → Linguagem principal utilizada no desenvolvimento da aplicação.
 
@@ -133,15 +133,63 @@ A credencial: ```-Dsonar.login=``` deve ser gerada acessando o seu perfil no Son
 
 ---
 
-## Arquitetura 🏛️
+## 🏛️ Arquitetura
 
-A API utiliza a **arquitetura MVC**:
+A API segue o padrão **MVC (Model–View–Controller)** adaptado ao contexto de **serviços REST** com **processamento assíncrono via Kafka**, garantindo organização, desacoplamento e facilidade de manutenção do código.
 
-- **Model (Domain)**: Contém os modelos de domínio, como `Consult` e `Patient`.
-- **Controller (Entrypoint)**: Expõe endpoints REST, recebe requisições HTTP e envia para os serviços.
-- **Service**: Contém a lógica de negócio, envio de mensagens Kafka e envio de emails.
-- **Mapper**: Converte DTOs em objetos de domínio e vice-versa.
-- **Consumer Kafka**: Consome mensagens do tópico Kafka para processamento posterior.
+### **Model (Domain)**
+
+*   Representa as **entidades centrais do negócio**, como Consult e Patient.
+
+
+*   Define os atributos e comportamentos essenciais da aplicação, refletindo diretamente as regras de domínio.
+
+
+### **Service**
+
+*   Camada responsável pela **lógica de negócio** da aplicação.
+
+
+*   Gerencia o **envio e consumo de mensagens Kafka**, o **disparo de e-mails** via JavaMailSender e o **processamento agendado** das consultas.
+
+
+*   Implementa o princípio de responsabilidade única, mantendo o código desacoplado das camadas de transporte (DTOs e controladores).
+
+
+### **Mapper**
+
+*   Responsável por **converter objetos entre diferentes camadas**, especialmente entre:
+
+
+  *   DTOs (camada de entrada/saída da API)
+
+
+  *   Modelos de domínio (camada interna da aplicação)
+
+
+*   Facilita a serialização e desserialização, evitando dependências diretas entre as camadas.
+
+
+### **Consumer Kafka**
+
+*   Atua como **ponto de integração assíncrona** com outros microsserviços.
+
+
+*   Consome mensagens do tópico Kafka assim que a aplicação é iniciada.
+
+
+*   Encaminha os dados recebidos para o ConsultService, que processa e agenda o envio de e-mails.
+
+
+*   Implementado com **Spring Kafka** e **Reactor Kafka**, garantindo performance e resiliência no consumo de mensagens.
+
+
+### **Scheduler**
+
+*   Componente responsável por **monitorar e processar periodicamente** as mensagens armazenadas em fila interna (emailQueue).
+
+
+*   Utiliza o @Scheduled do Spring para realizar o **envio automático de e-mails** em intervalos configuráveis.
 
 ---
 
@@ -286,25 +334,98 @@ F -->|Falha no envio| H[Reenfileira a consulta para nova tentativa]
     - Data, horário e motivo da consulta
     - Assinatura do sistema hospitalar
 
-## Configuração ⚙️
 
-### Kafka
+## ⚙️ Configurações da Aplicação (application.properties)
+
+O arquivo application.properties define as propriedades essenciais de infraestrutura da aplicação, como a integração com **Apache Kafka** e o **Mailtrap (serviço SMTP de teste de e-mails)**.
+
+### 🔸 **Configurações do Kafka**
+
 ```
-app.kafka.topics.consults=consults-topic
-app.kafka.groupid=consults-group
+spring.kafka.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=group-consult
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.enable-auto-commit=true
+spring.kafka.listener.missing-topics-fatal=false
+spring.kafka.listener.concurrency=1
+app.kafka.topics.consults=easyconsult-consult
+app.kafka.groupid=group-consult
 ```
 
-### Email
+#### Explicação:
+
+*   **spring.kafka.bootstrap-servers** → Endereço do servidor Kafka que a aplicação deve utilizar para consumir mensagens.
+
+
+*   **spring.kafka.consumer.group-id** → Identificador do grupo de consumidores responsável por processar as mensagens do tópico.
+
+
+*   **spring.kafka.consumer.auto-offset-reset** → Define o comportamento caso não haja _offset_ anterior; earliest indica que o consumo deve começar do início do tópico.
+
+
+*   **Deserializers** → Convertendo as mensagens Kafka (chave e valor) de bytes para String.
+
+
+*   **enable-auto-commit** → Habilita o commit automático dos offsets (no caso, as mensagens já processadas).
+
+
+*   **missing-topics-fatal=false** → Impede que a aplicação falhe ao iniciar caso o tópico ainda não exista.
+
+
+*   **listener.concurrency=1** → Define que haverá apenas um _listener thread_ consumindo mensagens do tópico.
+
+
+*   **app.kafka.topics.consults** → Nome do tópico que a aplicação está escutando (easyconsult-consult).
+
+
+*   **app.kafka.groupid** → Agrupa consumidores para o mesmo tópico, garantindo balanceamento de carga.
+
+
+> 💡 **Comportamento esperado:** Assim que a aplicação é iniciada, o _listener Kafka_ (@KafkaListener) passa a escutar o tópico configurado.Caso existam mensagens pendentes, elas são imediatamente processadas e enviadas para a fila interna (emailQueue), para posterior disparo de e-mails.
+
+### 🔸 **Configurações do Mailtrap (Envio de E-mails de Teste)**
+
 ```
-spring.mail.host=smtp.mailtrap.io
-spring.mail.port=2525
-spring.mail.username=<SEU_USERNAME>
-spring.mail.password=<SEU_PASSWORD>
+spring.mail.host=sandbox.smtp.mailtrap.io
+spring.mail.port=587
+spring.mail.username=35b7064a168033
+spring.mail.password=3657f3d5308daf
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.connectiontimeout=5000
+spring.mail.properties.mail.smtp.timeout=5000
+spring.mail.properties.mail.smtp.writetimeout=5000
+spring.mail.properties.mail.smtp.ssl.trust=*
+
 ```
 
+#### Explicação:
+
+*   **spring.mail.host / port** → Endereço e porta do servidor SMTP do Mailtrap.
 
 
+*   **spring.mail.username / password** → Credenciais geradas pelo Mailtrap para autenticação.
+
+
+*   **mail.smtp.auth / starttls.enable** → Habilitam autenticação e criptografia TLS para segurança no envio.
+
+
+*   **timeouts** → Definem tempos máximos de conexão, leitura e escrita, evitando travamentos.
+
+
+*   ssl.trust=\ → Aceita certificados SSL de qualquer host (útil em ambientes de teste).
+
+> 💡 **Comportamento esperado:** Cada mensagem Kafka recebida representa uma consulta a ser processada.Após o consumo, o EmailService usa as credenciais do Mailtrap para simular o envio real de e-mails aos pacientes.
+
+### 🔸 **Configuração do Servidor**
+
+```
+server.port=8089
+```
+
+*   Define a porta onde a aplicação será executada localmente.
 
 
