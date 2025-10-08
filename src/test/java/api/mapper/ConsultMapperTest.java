@@ -38,9 +38,9 @@ class ConsultMapperTest {
         assertNotNull(consult);
         assertEquals("1", consult.getId());
         assertEquals("Dra. Maria Silva", consult.getNameProfessional());
-        assertNotNull(consult.getPacient());
-        assertEquals("Jorginho", consult.getPacient().getName());
-        assertEquals("jorginho@gmail.com", consult.getPacient().getEmail());
+        assertNotNull(consult.getPatient());
+        assertEquals("Jorginho", consult.getPatient().getName());
+        assertEquals("jorginho@gmail.com", consult.getPatient().getEmail());
         assertEquals("14:30:00", consult.getLocalTime());
         assertEquals("2025-10-03", consult.getDate());
         assertEquals("Consulta de rotina", consult.getReason());
@@ -57,9 +57,9 @@ class ConsultMapperTest {
         assertNotNull(consult);
         assertEquals("", consult.getId());
         assertEquals("", consult.getNameProfessional());
-        assertNotNull(consult.getPacient());
-        assertEquals("", consult.getPacient().getName());
-        assertEquals("", consult.getPacient().getEmail());
+        assertNotNull(consult.getPatient());
+        assertEquals("", consult.getPatient().getName());
+        assertEquals("", consult.getPatient().getEmail());
         assertEquals("", consult.getLocalTime());
         assertEquals("", consult.getDate());
         assertEquals("", consult.getReason());

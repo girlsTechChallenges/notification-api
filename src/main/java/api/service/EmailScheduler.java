@@ -37,7 +37,7 @@ public class EmailScheduler {
             try {
                 emailService.sendEmail(consult);
             } catch (Exception e) {
-                logger.error("Erro ao enviar email para {}: {}", consult.getPacient().getEmail(), e.getMessage(), e);
+                logger.error("Erro ao enviar email para {}: {}", consult.getPatient().getEmail(), e.getMessage(), e);
                  consultService.getEmailQueue().add(consult);
             }
         }

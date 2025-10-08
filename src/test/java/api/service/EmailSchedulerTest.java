@@ -34,11 +34,11 @@ class EmailSchedulerTest {
     void processEmails_shouldSendEmailsAndClearQueue() {
         Consult consult1 = new Consult();
         consult1.setId("1");
-        consult1.setPacient(new Patient("Jorginho", "jorginho@gmail.com"));
+        consult1.setPatient(new Patient("Jorginho", "jorginho@gmail.com"));
 
         Consult consult2 = new Consult();
         consult2.setId("2");
-        consult2.setPacient(new Patient("Maria", "maria@gmail.com"));
+        consult2.setPatient(new Patient("Maria", "maria@gmail.com"));
 
         emailQueue.add(consult1);
         emailQueue.add(consult2);
@@ -62,7 +62,7 @@ class EmailSchedulerTest {
     void processEmails_shouldReaddConsultWhenEmailFails() {
         Consult consult = new Consult();
         consult.setId("1");
-        consult.setPacient(new Patient("Jorginho", "jorginho@gmail.com"));
+        consult.setPatient(new Patient("Jorginho", "jorginho@gmail.com"));
 
         emailQueue.add(consult);
 

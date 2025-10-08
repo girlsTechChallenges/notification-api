@@ -9,7 +9,7 @@ import lombok.*;
 public class Consult {
     private String id;
     private String nameProfessional;
-    private Patient pacient;
+    private Patient patient;
     private String localTime;
     private String date;
     private String reason;

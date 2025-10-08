@@ -44,6 +44,6 @@ public class ConsultService {
 
     public void processConsult(Consult consult) {
         emailQueue.add(consult);
-        logger.info("Consulta adicionada à fila de envio de emails: {} - {}", consult.getId(), consult.getPacient().getEmail());
+        logger.info("Consulta adicionada à fila de envio de emails: {} - {}", consult.getId(), consult.getPatient().getEmail());
     }
 }

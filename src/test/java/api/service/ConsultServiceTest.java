@@ -28,7 +28,7 @@ class ConsultServiceTest {
         Patient pacient = new Patient("Jorginho", "jorginho@gmail.com");
         Consult consult = new Consult();
         consult.setId("1");
-        consult.setPacient(pacient);
+        consult.setPatient(pacient);
 
         consultService.processConsult(consult);
 
@@ -42,7 +42,7 @@ class ConsultServiceTest {
         Patient pacient = new Patient("Jorginho", "jorginho@gmail.com");
         Consult consult = new Consult();
         consult.setId("1");
-        consult.setPacient(pacient);
+        consult.setPatient(pacient);
 
         String message = objectMapper.writeValueAsString(consult);
 

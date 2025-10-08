@@ -29,7 +29,7 @@ class EmailServiceTest {
         Consult consult = new Consult();
         consult.setId("1");
         consult.setNameProfessional("Dra. Maria Silva");
-        consult.setPacient(pacient);
+        consult.setPatient(pacient);
         consult.setLocalTime("14:30:00");
         consult.setDate("2025-10-03");
         consult.setReason("Consulta de rotina");
