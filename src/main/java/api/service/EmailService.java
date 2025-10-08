@@ -23,7 +23,7 @@ public class EmailService {
 
     private SimpleMailMessage chooseMessageEmail(Consult consult) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(consult.getPacient().getEmail());
+        message.setTo(consult.getPatient().getEmail());
 
         ConsultEmailStatus consultStatus;
         ConsultStatus status = ConsultStatus.valueOf(consult.getStatusConsult());
@@ -41,7 +41,7 @@ public class EmailService {
 
         String emailBody = String.format(
                 "Olá %s,%nSua consulta foi %s com %s.%n%nData: %s Hora: %s%nMotivo: %s%n%nAtenciosamente,%nSistema Hospitalar.",
-                consult.getPacient().getName(),
+                consult.getPatient().getName(),
                 consultStatus,
                 consult.getNameProfessional(),
                 consult.getDate(),
@@ -57,9 +57,9 @@ public class EmailService {
         try {
             SimpleMailMessage message = chooseMessageEmail(consult);
             mailSender.send(message);
-            logger.info("Email enviado com sucesso para: {} (id: {})", consult.getPacient().getEmail(), consult.getId());
+            logger.info("Email enviado com sucesso para: {} (id: {})", consult.getPatient().getEmail(), consult.getId());
         } catch (MailException e) {
-            logger.error("Erro ao enviar email para {}: {}", consult.getPacient().getEmail(), e.getMessage());
+            logger.error("Erro ao enviar email para {}: {}", consult.getPatient().getEmail(), e.getMessage());
             throw new EmailNotSentException("Não foi possível enviar o email, tente novamente mais tarde.");
         }
     }
